@@ -1,0 +1,35 @@
+ext {
+    // Android
+    minSdkVersion = 16
+    targetSdkVersion = 29
+    androidCompileSdkVersion = 29
+    androidBuildToolsVersion = "30.0.0"
+
+    ktxVersion = "1.3.0"
+    appcompatVersion = "1.1.0"
+    constraintlayoutVersion = "1.1.3"
+
+    retrofit2Version = "2.6.1"
+    okhttp3Version = "4.3.1"
+
+    coroutines = "1.3.4"
+
+    gsonVersion = "2.8.6"
+
+    appDependencies = [
+            kotlin                : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+
+            coreKtx               : "androidx.core:core-ktx:$ktxVersion",
+            appcompat             : "androidx.appcompat:appcompat:$appcompatVersion",
+            constraintlayout      : "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion",
+            retrofit2             : "com.squareup.retrofit2:retrofit:$retrofit2Version",
+            retrofit2GsonConverter: "com.squareup.retrofit2:converter-gson:$retrofit2Version",
+            okhttp3               : "com.squareup.okhttp3:okhttp-brotli:$okhttp3Version",
+            okhttp3Logging        : "com.squareup.okhttp3:logging-interceptor:$okhttp3Version",
+
+            coroutines            : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
+            coroutinesAndroid     : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines",
+
+            gson                  : "com.google.code.gson:gson:$gsonVersion",
+    ]
+}

@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+def propertiesFile = rootProject.file('local.properties')
+
+android {
+    compileSdkVersion rootProject.androidCompileSdkVersion as int
+    buildToolsVersion rootProject.androidBuildToolsVersion
+
+    defaultConfig {
+        applicationId "tw.nolions.networkoperation"
+        minSdkVersion rootProject.ext.minSdkVersion as int
+        targetSdkVersion rootProject.ext.targetSdkVersion as int
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            def properties = properties(propertiesFile)
+
+
+            resValue "string", "SITE_CODE", properties.getProperty('site.code', "")
+            resValue "string", "PARAS_API", properties.getProperty('paras.api', "")
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def appDependencies = rootProject.ext.appDependencies
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation appDependencies.kotlin
+    implementation appDependencies.coreKtx
+    implementation appDependencies.appcompat
+    implementation appDependencies.constraintlayout
+    implementation appDependencies.retrofit2
+    implementation appDependencies.retrofit2GsonConverter
+    implementation appDependencies.okhttp3
+    implementation appDependencies.gson
+    implementation appDependencies.okhttp3Logging
+    implementation appDependencies.coroutines
+    implementation appDependencies.coroutinesAndroid
+}
+
+static def properties(file) {
+    Properties properties = new Properties()
+    properties.load(file.newDataInputStream())
+
+    return properties
+}

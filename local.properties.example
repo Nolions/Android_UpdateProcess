@@ -1,0 +1,5 @@
+sdk.dir=/Users/nolions/Library/Android/sdk
+        
+site.code=<Site_Code>
+
+paras.api = <API_Address>
